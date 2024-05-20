@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .header-info {
+            margin-top: 20px;
+        }
+
+        .header-info th {
+            width: 200px;
+        }
+        .instance-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            background-color: #e9f5ff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>User Info</h1>
+    <p>Instance Name: <span th:text="${instanceName}" class="instance-name"></span></p>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.lastname}"></td>
+            <td th:text="${user.age}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="header-info">
+        <h2>Request Headers</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Header</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="header : ${headers}">
+                <td th:text="${header.key}"></td>
+                <td th:text="${header.value}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
